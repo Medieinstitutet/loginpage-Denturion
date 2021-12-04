@@ -70,18 +70,18 @@ logoutBtn.addEventListener("click", function() {
 })
 
 //Adding text to main on submit, depending on result.
-const main = document.getElementById("main");
+const mainText = document.getElementById("mainText");
 
 function notLoggedIn() {
-    main.innerHTML = "Please log in to continue";
+    mainText.innerHTML = "Please log in to continue";
 }
 
 function loggedIn() {
-    main.innerHTML = "Log in successful, welcome!";
+    mainText.innerHTML = "Log in successful, welcome!";
 }
 
 function wrongLogin() {
-    main.innerHTML = "Incorrect login information, please try again";
+    mainText.innerHTML = "Incorrect login information, please try again";
 }
 
 
