@@ -2,14 +2,31 @@
 localStorage.setItem("userName", "janne");
 localStorage.setItem("pw", "test");
 
+var storedName = localStorage.getItem('userName');
+var storedPw = localStorage.getItem('pw');
 
+window.onload = function(){
+    console.log("Hej");
+    loggedIn();
+    const session = localStorage.getItem("session");
+    if (session){
+        loggedIn();
+        showLogoutBtn();
+        const removeNameInput = document.getElementById("userName");
+        removeNameInput.remove();
+        const removePasswordInput = document.getElementById("pw");
+        removePasswordInput.remove();
+        const removeLoginBtn = document.getElementById("loginBtn");
+        removeLoginBtn.remove();                  
+    }
+}
 
 //Header content.
 const header = document.getElementById("header");
 
 const userName = document.createElement("input");
     userName.setAttribute("id", "userName");
-    userName.setAttribute("type", "password");
+    userName.setAttribute("type", "username");
     userName.setAttribute("placeholder", "Your username");
 
 const pw = document.createElement("input");
@@ -45,6 +62,7 @@ loginBtn.addEventListener("click", function() {
     var pw = document.getElementById('pw').value;
 
     if(userName === storedName && pw === storedPw){
+        localStorage.setItem("session", userName);
         loggedIn();
         showLogoutBtn();
         const removeNameInput = document.getElementById("userName");
@@ -60,14 +78,15 @@ loginBtn.addEventListener("click", function() {
     }
 });
 
+
 //Logout function
 logoutBtn.addEventListener("click", function() {
     notLoggedIn();
-    showLoginForm();
-
+    showLoginForm();   
     const removeLogoutBtn = document.getElementById("logoutBtn");
     removeLogoutBtn.remove();
 })
+
 
 //Adding text to main on submit, depending on result.
 const mainText = document.getElementById("mainText");
@@ -83,8 +102,3 @@ function loggedIn() {
 function wrongLogin() {
     mainText.innerHTML = "Incorrect login information, please try again";
 }
-
-
-
-
-
