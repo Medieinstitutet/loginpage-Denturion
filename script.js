@@ -6,8 +6,7 @@ var storedName = localStorage.getItem('userName');
 var storedPw = localStorage.getItem('pw');
 
 window.onload = function(){
-    console.log("Hej");
-    loggedIn();
+    console.log("Hej");    
     const session = localStorage.getItem("session");
     if (session){
         loggedIn();
@@ -85,6 +84,7 @@ logoutBtn.addEventListener("click", function() {
     showLoginForm();   
     const removeLogoutBtn = document.getElementById("logoutBtn");
     removeLogoutBtn.remove();
+    delete localStorage.session;
 })
 
 
